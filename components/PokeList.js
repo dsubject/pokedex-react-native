@@ -13,8 +13,11 @@ export default class PokeList extends React.Component {
 
 
   render() {
+   
     return (
       <View>
+      
+      
       
       <FlatList
         data={this.props.pokemon}

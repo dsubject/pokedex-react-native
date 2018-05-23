@@ -86,6 +86,12 @@ export default class App extends Component {
     };
   }
 
+pleaseWork = (index) => {
+    Actions.home()
+    Actions.details()
+    Actions.pop({refresh: {pokemon: this.state.pokemon, current: index}})
+  } 
+
 
   render() {
    
@@ -93,7 +99,7 @@ export default class App extends Component {
       <Router>
       <Scene key="root" hideNavBar>
         <Scene key="main" >
-            <Scene key="home" title="Home" pokemon={this.state.pokemon} component={PokeList} />
+            <Scene key="home" title="Home"  pleaseWork={this.pleaseWork} pokemon={this.state.pokemon} component={PokeList} />
             <Scene key="details" title="Details" current={this.state.currentPoke} 
             pokemon={this.state.pokemon} component={Details} />
         </Scene>

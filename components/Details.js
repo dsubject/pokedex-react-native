@@ -14,8 +14,8 @@ export default class Details extends React.Component {
    
     return (
         <View>
-            {this.props.pokemon.filter((findpokemon, i) => {
-                return this.props.current === i;
+            {this.props.pokemon.filter((findpokemon, index) => {
+                return this.props.current === index;
             }).map((poke, index) => {
                 return <RenderPoke
                             key={index}
