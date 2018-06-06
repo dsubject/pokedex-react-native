@@ -7,11 +7,11 @@ import RenderPoke from './RenderPoke.js';
 
 
 
-export default class Details extends React.Component {
+export default class PokeItem extends React.Component {
 
 
   render() {
-   
+    console.log(this.props.current)
     return (
         <View>
             {this.props.pokemon.filter((findpokemon, index) => {

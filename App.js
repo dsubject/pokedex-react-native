@@ -5,7 +5,7 @@ import { Actions, Scene, Router } from 'react-native-router-flux';
 
 //import Header from './components/Header.js';
 import PokeList from './components/PokeList.js';
-import Details from './components/Details.js';
+import PokeItem from './components/PokeItem.js';
 
 
 const data = [
@@ -86,27 +86,33 @@ export default class App extends Component {
     };
   }
 
-pleaseWork = (index) => {
-    Actions.home()
-    Actions.details()
-    Actions.pop({refresh: {pokemon: this.state.pokemon, current: index}})
-  } 
+  goToPokemon = (index) => {
+    this.setState({currentPoke: index}, () => {
+      Actions.refresh({currentPoke: this.state.currentPoke})
+    })
+  }
 
 
   render() {
    
     return (
       <Router>
-      <Scene key="root" hideNavBar>
-        <Scene key="main" >
-            <Scene key="home" title="Home"  pleaseWork={this.pleaseWork} pokemon={this.state.pokemon} component={PokeList} />
-            <Scene key="details" title="Details" current={this.state.currentPoke} 
-            pokemon={this.state.pokemon} component={Details} />
+        <Scene key="root" hideNavBar>
+          <Scene key="auth" >
+              <Scene  key="home" 
+                      title="Pokemon" 
+                      goToPokemon={this.goToPokemon}  
+                      pokemon={this.state.pokemon} 
+                      component={PokeList} 
+                    />
+              <Scene  key="details" 
+                      title="Details" 
+                      current={this.state.currentPoke} 
+                      pokemon={this.state.pokemon} 
+                      component={PokeItem} 
+                    />
+          </Scene>
         </Scene>
-
-       
-
-      </Scene>
     </Router>
 
       
